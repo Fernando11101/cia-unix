@@ -1,40 +1,61 @@
 # cia-unix
 
-*Decrypt CIA and 3DS roms in UNIX environments (Linux and macOS)*
+*Decrypt CIA and 3DS roms in UNIX and PowerShell environments (Linux, Windows and MacOS)*
 
 ```
 cia-unix/
-├─ cia-unix
-├─ ctrdecrypt
-├─ ctrtool
-├─ makerom
-└─ Encrypted Game.cia
+├─ bin/
+│  ├─ Linux/
+│  │  ├─ ctrdecrypt
+│  │  ├─ ctrtool
+│  │  ├─ makerom
+│  ├─ MacOS/
+│  │  ├─ arm64/
+│  │  │  ├─ ctrtool
+│  │  │  ├─ makerom
+│  │  ├─ universal/
+│  │  │  ├─ ctrdecrypt
+│  │  ├─ x64/
+│  │  │  ├─ ctrtool
+│  │  │  ├─ makerom
+│  ├─ Windows/
+│  │  ├─ ctrdecrypt.exe
+│  │  ├─ ctrtool.exe
+│  │  ├─ makerom.exe
+├─ cia-unix.sh
+├─ cia-windows.ps1
+├─ dlc.cia
+├─ game.3ds
+├─ game.cia
+├─ seeddb.bin
+└─ update.cia
 ```
-
-**ctrtool**, **makerom** and [**ctrdecrypt**](https://github.com/shijimasoft/ctrdecrypt) can be downloaded with `dltools.sh`
 
 ## ✅ Roadmap
 - [x] Decrypt .cia
   - [x] Games
-  - [x] Patch and DLCs
+  - [x] Updates and DLCs
 - [x] Decrypt .3ds
 - [x] Rust [`decrypt.py`](https://github.com/shijimasoft/cia-unix/blob/old-python3/decrypt.py) rewrite (ctrdecrypt)
+- [x] Port [`cia-unix.cr`](https://github.com/shijimasoft/cia-unix/blob/main/cia-unix.cr) to cia-unix.sh and cia-windows.ps1
+
 
 > [!WARNING]
 > Decryption with cia-unix may fail, when it happens it is suggested to decrypt roms directly on the 3DS.
 
 The old _python 3_ version can be found [here](https://github.com/shijimasoft/cia-unix/tree/old-python3).
 
-## ⚡️ Build from source
-You’ll need the [Crystal compiler](https://crystal-lang.org/install/)
+## Windows users
 
-```bash
-crystal build cia-unix.cr --release --no-debug
-```
+You need to run this command in PowerShell before running .\cia-windows.ps1:
 
-Dependencies can be compiled with [makerom](https://github.com/3DSGuy/Project_CTR/tree/master/makerom) and [ctrtool](https://github.com/3DSGuy/Project_CTR/tree/master/ctrtool) make files.
+Set-ExecutionPolicy -Scope Process Bypass
 
 ## Contributors
 ctrtool and makerom are from [3DSGuy repository](https://github.com/3DSGuy/Project_CTR)
+
+ctrdecrypt are from [shijimasoft repository](https://github.com/shijimasoft/ctrdecrypt)
+
+seeddb.bin are from [ihaveamac repository](https://github.com/ihaveamac/3DS-rom-tools)
 
 *Adaware* contributed translating the [windows-only version](https://github.com/matiffeder/3DS-stuff/blob/master/Batch%20CIA%203DS%20Decryptor.bat)
